@@ -6,7 +6,6 @@ const router = express.Router()
 router.get('/', async(req, res) => {
     try {
         const products = await productModel.find().populate('category',['name'])
-        console.log(products)
         res.render('products/list', {products: products})
     } catch(e) {
         console.log(e)
@@ -30,12 +29,19 @@ router.post('/', async(req, res) => {
             price: req.body.price,
             category: req.body.category
         })
+        if (req.body.image != null && req.body.image != '') {
+            const imageEncode = JSON.parse(req.body.image)
+            productNew.imageType = imageEncode.type
+            productNew.imageData = new Buffer.from(imageEncode.data, 'base64')
+        }
         await productNew.save()
         res.redirect('/product')
     } catch(e) {
         console.log(e.message)
         res.redirect('/')
     }
+    
+    res.send(imageEncode)
 })
 
 // Edit product
@@ -58,6 +64,11 @@ router.put('/edit/:id', async(req, res) => {
         product.quantity = req.body.quantity,
         product.price = req.body.price,
         product.category = req.body.category
+        if (req.body.image != null && req.body.image != '') {
+            const imageEncode = JSON.parse(req.body.image)
+            product.imageType = imageEncode.type
+            product.imageData = new Buffer.from(imageEncode.data, 'base64')
+        }
         await product.save()
         res.redirect('/product')
     }
@@ -70,11 +81,12 @@ router.put('/edit/:id', async(req, res) => {
 // Delete product
 router.delete('/delete/:id', async(req, res) => {
     try {
-        await productModel.findByIdAndDelete(req.params.id)
+        const productDelete = await productModel.findById(req.params.id)
+        await productDelete.remove()
         res.redirect('/product')
     }
     catch(e) {
-        console.log(e.message)
+        console.log(e)
         res.redirect('/')
     }
 })

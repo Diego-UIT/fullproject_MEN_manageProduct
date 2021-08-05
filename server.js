@@ -14,7 +14,7 @@ app.use(expressLayouts);
 app.set('layout', 'layouts/layout')
 
 app.use(express.static('public'))
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false, limit: '10mb' }));
 
 const connectFunction = async() => {
     try {

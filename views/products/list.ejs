@@ -8,9 +8,8 @@
             <th>Information</th>
             <th>Price</th>
             <th>Quantity</th>
+            <th>Image</th>
             <th>Category</th>
-            <!-- <th>Edit</th>
-            <th>Delete</th> -->
             <th>Action</th>
         </tr>
       </thead>
@@ -22,6 +21,7 @@
                     <td><%= product.information %></td>
                     <td><%= product.price %></td>
                     <td><%= product.quantity %></td>
+                    <td><img src="<%= product.imageSrc %>" width="50px" style="border-radius: 50%"></td>
                     <td>
                       <%
                         if(product.category){%>

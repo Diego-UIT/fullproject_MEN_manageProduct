@@ -5,7 +5,6 @@ const router = express.Router()
 router.get('/', async(req, res) => {
     try {
         const categories = await categoryModel.find()
-        console.log(categories)
         res.render('categories/list', {categories: categories})
     } catch(e) {
         console.log(e)
@@ -35,7 +34,8 @@ router.post('/', async(req, res) => {
 // Edit Category
 router.get('/edit/:id', async(req, res) => {
     try {
-        const category = await categoryModel.findById(req.params.id)
+        const categoryDelete = await categoryModel.findById(req.params.id)
+        await categoryDelete.remove()
         res.render('categories/edit', {category: category})
     } catch(e) {
         console.log(e)
@@ -59,7 +59,8 @@ router.put('/edit/:id', async(req, res) => {
 // Delete Category
 router.delete('/delete/:id', async(req, res) => {
     try {
-        await categoryModel.findByIdAndDelete(req.params.id)
+        const categoryDelete = await categoryModel.findById(req.params.id)
+        await categoryDelete.remove()
         res.redirect('/category')
     }
     catch(e) {
