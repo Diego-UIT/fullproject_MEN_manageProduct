@@ -34,8 +34,7 @@ router.post('/', async(req, res) => {
 // Edit Category
 router.get('/edit/:id', async(req, res) => {
     try {
-        const categoryDelete = await categoryModel.findById(req.params.id)
-        await categoryDelete.remove()
+        const category = await categoryModel.findById(req.params.id)
         res.render('categories/edit', {category: category})
     } catch(e) {
         console.log(e)

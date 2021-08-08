@@ -1,2 +1,23 @@
-<h1>Home page</h1>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti porro optio dolores doloribus vero ratione consectetur inventore! Mollitia, delectus iure! Voluptatibus, laudantium inventore rem molestiae ipsum cupiditate libero assumenda beatae.</p>
+<div class="container my-5">
+    <div class="row">
+        <%
+            products.map(product=>{%>
+                <div class="col-sm-6 col-md-4">
+                    <div class="product-card">
+                        <div class="product-card-img">
+                            <img src="<%= product.imageSrc %>" alt="">
+                        </div>
+                        <div class="product-card-content">
+                            <h2 class="name"><%= product.name %></h2>
+                            <p class="information"><%= product.information %></p>
+                            <p class="price">
+                                <strong><%= product.price %></strong>
+                            </p>
+                        </div>
+                        <a href="/cart/add/<%= product._id %>" class="btn btn-primary">Add to cart</a>
+                    </div>
+                </div>
+            <%})
+        %>
+    </div>
+</div>
