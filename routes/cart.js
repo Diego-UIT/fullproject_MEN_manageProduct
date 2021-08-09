@@ -6,10 +6,12 @@ const router = express.Router()
 router.get('/', (req, res) => {
     try {
         let carts = []
+        let priceTotal = 0
         if (req.session.cart) {
             carts = req.session.cart.items
+            priceTotal = req.session.cart.priceTotal
         }
-        res.render('carts/cart', {carts: carts})
+        res.render('carts/cart', {carts: carts, priceTotal: priceTotal})
     } catch(e) {
         console.log(e)
         res.redirect('/')
@@ -20,14 +22,10 @@ router.get('/', (req, res) => {
 router.get('/add/:id', async(req, res) => {
     try {
         const product = await productModel.findById(req.params.id)
-        let itemsOld = []
-        if (req.session.cart) {
-            itemsOld = req.session.cart.items
-        }
-        const cart = new cartModel(itemsOld)
+        const cart = new cartModel(req.session.cart ? req.session.cart : {items: []})
         cart.add(product, req.params.id, product.imageSrc)
         req.session.cart = cart
-        res.redirect('/cart')
+        res.send('Add success!')
     } catch(e) {
         console.log(e)
         res.redirect('/')
@@ -35,13 +33,9 @@ router.get('/add/:id', async(req, res) => {
 })
 
 // Reduce Cart
-router.put('/reduce/:id', (req, res) => {
+router.get('/reduce/:id', (req, res) => {
     try {
-        let itemsOld = []
-        if (req.session.cart) {
-            itemsOld = req.session.cart.items
-        }
-        const cart = new cartModel(itemsOld)
+        const cart = new cartModel(req.session.cart)
         cart.reduce(req.params.id)
         req.session.cart = cart
         res.redirect('/cart')
@@ -53,14 +47,11 @@ router.put('/reduce/:id', (req, res) => {
 })
 
 // Increase Cart
-router.put('/increase/:id', (req, res) => {
+router.get('/increase/:id', (req, res) => {
     try {
-        let itemsOld = []
-        if (req.session.cart) {
-            itemsOld = req.session.cart.items
-        }
-        const cart = new cartModel(itemsOld)
-        cart.increase(req.params.id)
+        const id = req.params.id
+        const cart = new cartModel(req.session.cart)
+        cart.increase(id)
         req.session.cart = cart
         res.redirect('/cart')
     }
@@ -71,15 +62,17 @@ router.put('/increase/:id', (req, res) => {
 })
 
 // Delete Cart
-router.delete('/delete/:id', (req, res) => {
-    let itemsOld = []
-        if (req.session.cart) {
-            itemsOld = req.session.cart.items
-        }
-    const cart = new cartModel(itemsOld)
-    cart.delete(req.params.id)
-    req.session.cart = cart
-    res.redirect('/cart')
+router.post('/:id',(req,res)=>{
+    try{
+        const id=req.params.id
+        const cart=new cartModel(req.session.cart)
+        cart.delete(id)
+        req.session.cart=cart 
+        res.redirect('/cart')
+    }catch(e){
+        console.log(e)
+        res.redirect('/')
+    }
 })
 
 module.exports = router

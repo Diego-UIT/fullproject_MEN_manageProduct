@@ -16,7 +16,21 @@
             <a class="nav-link" href="/category">Categories</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/cart">Carts</a>
+            <a class="nav-link" href="/cart">
+              Carts
+              <span id="numberCart">
+                <span id="numberCart2">
+                  <%
+                  if(session.cart){%>
+                      <%= session.cart.items.length %>
+                    <%}
+                    else{%>
+                      0
+                  <%}
+                   %>
+                </span>
+              </span>
+            </a>       
           </li>
         </ul>
       </div>

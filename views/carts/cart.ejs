@@ -17,28 +17,32 @@
           <tbody>
               <%
               carts.map(cart=>{%>
-                    <tr>
-                        <tr>
-                            <th><%= cart.item.name %></th>
-                            <td><%= cart.item.price %></td>
-                            <td>
-                              <div class="d-flex">
-                                <form action="/cart/reduce/<%= cart.item._id %>?_method=PUT" method="POST">
-                                  <button type="submit" class="btn btn-sm btn-outline-primary btn-qty">-</button>
-                                </form>
+                    <tr id="tr_cart_<%= cart.id %>">
+                        <th><%= cart.item.name %></th>
+                        <td><%= cart.item.price %>₫</td>
+                        <td>
+                          <div>
+                            <a href="/cart/reduce/<%= cart.id %>" 
+                               class="btn btn-sm btn-outline-primary btn-qty reduceCart"
+                               id="<%= cart.id %>">-</a>
+                            <span id="qty<%= cart.id %>">
+                              <span id="qty2<%= cart.id %>">
                                 <%= cart.qty %>
-                                <form action="/cart/increase/<%= cart.item._id %>?_method=PUT" method="POST">
-                                  <button type="submit" class="btn btn-sm btn-outline-primary btn-qty">+</button>
-                                </form>
-                              </div>
-                            </td>
-                            <td>
-                                <img src="<%= cart.imageSrc %>" width="50px" style="border-radius: 50%">
-                            </td>
-                            <td>
-                                <a class="btn btn-danger" data-id="<%= cart.item._id %>" data-bs-toggle="modal" data-bs-target="#deleteModal">Xóa</a>
-                            </td>
-                        </tr>
+                              </span>
+                            </span>
+                            <a href="/cart/increase/<%= cart.id %>" 
+                               class="btn btn-sm btn-outline-primary btn-qty increaseCart" 
+                               id="<%= cart.id %>">+</a>
+                          </div>
+                        </td>
+                        <td>
+                            <img src="<%= cart.imageSrc %>" width="50px" style="border-radius: 50%">
+                        </td>
+                        <td>
+                            <form action="/cart/<%= cart.id %>" method="POST" data-id="<%= cart.id %>" class="deleteCart">
+                              <input type="submit" value="Delete" class="btn btn-danger">
+                            </form>
+                        </td>
                     </tr>
                 <%})
               %>
@@ -46,46 +50,5 @@
         </table>
       </div>
     </div>
-    <p class="text-right total-price">Total: <strong id="total">60000</strong></p>
+    <h1 id="total1"><span id="total2">Total <%= priceTotal %>₫</span></h1>
 </div>
-
-<!-- Modal confirm delete cart -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="deleteModalLabel">Xóa sản phẩm</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          Bạn chắn chắn muốn xóa sản phẩm này?
-        </div>
-        <div class="modal-footer">
-          <button id="delete-cart-modal" type="button" class="btn btn-danger">Save changes</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <form name="deleteForm" method="POST"></form>
-  
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var cartId
-      var btnDeleteCart = document.getElementById('delete-cart-modal')
-      var deleteForm = document.forms["deleteForm"]
-      var deleteModalEl = document.getElementById('deleteModal')
-  
-      deleteModalEl.addEventListener('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget)
-        cartId = button.data('id') 
-      })
-  
-      btnDeleteCart.onclick = function() {
-        deleteForm.action = '/cart/delete/' + cartId + '?_method=DELETE'
-        deleteForm.submit()
-      }
-  
-    })
-  </script>

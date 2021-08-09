@@ -1,7 +1,6 @@
 {
   "name": "lesson2_fullproject_men",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,5 +18,15 @@
     "express-session": "^1.17.2",
     "method-override": "^3.0.0",
     "mongoose": "^5.13.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Diego-UIT/fullproject_MEN_manageProduct.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Diego-UIT/fullproject_MEN_manageProduct/issues"
+  },
+  "homepage": "https://github.com/Diego-UIT/fullproject_MEN_manageProduct#readme",
+  "description": ""
 }

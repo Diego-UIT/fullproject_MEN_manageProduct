@@ -1,41 +1,37 @@
-function cart(itemsOld) {
-  this.items = itemsOld || []
-  this.priceTotal = 0
+function cart(cartOld) {
+  this.items = cartOld.items || []
+  this.priceTotal = cartOld.priceTotal || 0
 
-  this.add = function(product, id, imageSrc) {
+  this.add = (product, id, imageSrc) => {
     const index = this.items.findIndex(s => s.id === id)
     if (index < 0) {
       this.items.push({id: id, qty: 1, item: product, imageSrc})
     } else {
       this.items[index].qty++
     }
+    //console.log(product.price)
+    this.priceTotal += product.price
   }
 
-  this.delete = function(id) {
+  this.delete = (id) => {
     const index = this.items.findIndex(s => s.id === id)
+    this.priceTotal -= this.items[index].item.price * this.items[index].qty
     this.items.splice(index, 1)
   }
 
-  this.reduce = function(id) {
+  this.reduce = (id) => {
     const index = this.items.findIndex(s => s.id === id)
+    this.priceTotal -= this.items[index].item.price
     this.items[index].qty--
-    if (this.items[index].qty <= 0) {
+    if(this.items[index].qty <= 0){
       this.items.splice(index, 1)
     }
   }
 
-  this.increase = function(id) {
+  this.increase = (id) => {
     const index = this.items.findIndex(s => s.id === id)
+    this.priceTotal += this.items[index].item.price
     this.items[index].qty++
-  }
-
-  this.totalPrice = function (id) {
-    const index = this.items.findIndex(s => s.id === id)
-    if (this.items.length < 1) {
-      return 0
-    } else {
-      this.priceTotal = this.items[index].qty * this.items[index].price
-    }
   }
 }
 
