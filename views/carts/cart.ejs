@@ -21,18 +21,16 @@
                         <th><%= cart.item.name %></th>
                         <td><%= cart.item.price %>₫</td>
                         <td>
-                          <div>
-                            <a href="/cart/reduce/<%= cart.id %>" 
-                               class="btn btn-sm btn-outline-primary btn-qty reduceCart"
-                               id="<%= cart.id %>">-</a>
+                          <div class="d-flex">
+                            <form action="/cart/reduce/<%= cart.id %>?_method=PUT" method="POST" class="reduceCart" data-id="<%= cart.id %>">
+                              <input type="submit" value="-" class="btn btn-sm btn-outline-primary btn-qty">
+                            </form>
                             <span id="qty<%= cart.id %>">
-                              <span id="qty2<%= cart.id %>">
-                                <%= cart.qty %>
-                              </span>
+                              <span id="qty2<%= cart.id %>"><%= cart.qty %></span>
                             </span>
-                            <a href="/cart/increase/<%= cart.id %>" 
-                               class="btn btn-sm btn-outline-primary btn-qty increaseCart" 
-                               id="<%= cart.id %>">+</a>
+                            <form action="/cart/increase/<%= cart.id %>?_method=PUT" method="POST" class=" increaseCart" data-id="<%= cart.id %>">
+                              <input type="submit" value="+" class="btn btn-sm btn-outline-primary btn-qty">
+                            </form>
                           </div>
                         </td>
                         <td>

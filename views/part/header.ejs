@@ -1,6 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">Evo Furniture</a>
+      <a class="navbar-brand" href="/">
+        <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+        Evo Furniture
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -9,29 +12,45 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              User
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="/user/profile">Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/user">List users</a></li>
+              <li><a class="dropdown-item" href="/user/login">Login</a></li>
+              <li><a class="dropdown-item" href="/user/register">Register</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
+            </ul>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="/product">Products</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/category">Categories</a>
           </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="/cart">
               Carts
               <span id="numberCart">
                 <span id="numberCart2">
-                  <%
+                  (<%
                   if(session.cart){%>
                       <%= session.cart.items.length %>
                     <%}
                     else{%>
                       0
                   <%}
-                   %>
+                   %>)
                 </span>
               </span>
             </a>       
           </li>
+          
         </ul>
       </div>
     </div>

@@ -33,45 +33,46 @@ router.get('/add/:id', async(req, res) => {
 })
 
 // Reduce Cart
-router.get('/reduce/:id', (req, res) => {
+router.put('/reduce/:id', (req, res) => {
     try {
+        const id = req.params.id
         const cart = new cartModel(req.session.cart)
-        cart.reduce(req.params.id)
+        cart.reduce(id)
         req.session.cart = cart
-        res.redirect('/cart')
+        res.send('Reduce successful!')
     }
     catch(e) {
         console.log(e)
-        res.redirect('/')
+        res.send('Reduce failed!')
     }
 })
 
 // Increase Cart
-router.get('/increase/:id', (req, res) => {
+router.put('/increase/:id', (req, res) => {
     try {
         const id = req.params.id
         const cart = new cartModel(req.session.cart)
         cart.increase(id)
         req.session.cart = cart
-        res.redirect('/cart')
+        res.send('Increase successful!')
     }
     catch(e) {
         console.log(e)
-        res.redirect('/')
+        res.send('Increase failed!')
     }
 })
 
 // Delete Cart
-router.post('/:id',(req,res)=>{
+router.delete('/:id',(req,res)=>{
     try{
         const id=req.params.id
         const cart=new cartModel(req.session.cart)
         cart.delete(id)
         req.session.cart=cart 
-        res.redirect('/cart')
+        res.send('Delete successful!')
     }catch(e){
         console.log(e)
-        res.redirect('/')
+        res.send('Delete failed!')
     }
 })
 

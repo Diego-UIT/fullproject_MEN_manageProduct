@@ -1,0 +1,6 @@
+npm install bcrypt
+npm install git://github.com/RGBboy/express-flash.git
+npm install passport
+npm install passport-github
+npm install passport-google-oauth20
+npm install passport-facebook

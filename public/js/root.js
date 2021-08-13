@@ -1,5 +1,5 @@
 document.getElementById('year').innerHTML = new Date().getFullYear()
-const root = location.protocol + "//" + location.host
+const root = location.protocol + '//' + location.host
 
 $('.addToCart').click(function(event){
     event.preventDefault()
@@ -9,63 +9,69 @@ $('.addToCart').click(function(event){
         type:'GET',
         data:{},
         success:function(data){
-          swal(data, "continue buy!", "success")
-          $("#numberCart").load(root + " #numberCart2")
+          swal(data, 'continue buy!', 'success')
+          $('#numberCart').load(root + ' #numberCart2')
         }
       })
 })
 
-$('.increaseCart').click(function(event){
+$('.increaseCart').on('submit', function(event){
     event.preventDefault()
-    const href = this.href
-    const id = this.id
-    const qty2 = "#qty2" + id
-    console.log(id)
+    const action = $(this).attr('action')
+    const id = $(this).data('id')
+    const qty2 = '#qty2' + id
 
     $.ajax({
-        url:href,
-        type:'GET',
+        url:action,
+        type:'PUT',
         data:{},
         success:function(){
-          swal("Increase successful!", "continue!", "success")
-          $("#total1").load(root + "/cart #total2")
-          $("#qty"+id).load(root + "/cart " + qty2)
+          swal('Increase successful!', 'continue!', 'success')
+          $('#total1').load(root + '/cart #total2')
+          $('#qty'+id).load(root + '/cart ' + qty2)
+          $('#numberCart').load(root + ' #numberCart2')
         }
       })
 })
 
-$('.reduceCart').click(function(event){
+$('.reduceCart').on('submit', function(event){
     event.preventDefault()
-    const href = this.href
-    const id = this.id
-    const qty2 = "#qty2" + id
+    const action = $(this).attr('action')
+    const id = $(this).data('id')
+    const qty2 = '#qty2' + id
+    const tr_cart_id = '#tr_cart_'+ id
+
     $.ajax({
-        url:href,
-        type:'GET',
+        url:action,
+        type:'PUT',
         data:{},
         success:function(){
-          swal("Reduce successful!", "continue!", "success")
-          $("#total1").load(root + "/cart #total2")
-          $("#qty"+id).load(root + "/cart " + qty2)
+          swal('Reduce successful!', 'continue!', 'success')
+          $('#total1').load(root + '/cart #total2')
+          $('#qty' + id).load(root + '/cart ' + qty2)
+          $('#numberCart').load(root + ' #numberCart2')
+          if ($(qty2).text() === '1') {
+            $(tr_cart_id).empty()
+          }
         }
       })
 })
 
-$('.deleteCart').on("submit", function(event) {
+$('.deleteCart').on('submit', function(event) {
   event.preventDefault()
   const action = $(this).attr('action')
   const href = root + action
-  const tr_cart_id = "#tr_cart_"+ $(this).data("id")
+  const tr_cart_id = '#tr_cart_'+ $(this).data('id')
   
   $.ajax({
       url:href,
-      type:'POST',
+      type:'DELETE',
       data:{},
       success:function(){
-          console.log("delete ok")
-          swal("Delete successful!", "continue!", "success")
-          $("#total1").load(root + "/cart #total2")
+          swal('Delete successful!', 'continue!', 'success')
+          $('#total1').load(root + '/cart #total2')
           $(tr_cart_id).empty()
+          $('#numberCart').load(root + ' #numberCart2')
       }
     })
 })
