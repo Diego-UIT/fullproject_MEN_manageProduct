@@ -17,7 +17,7 @@ const port = 3000
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: { maxAge: 60*60*1000 }
   }))
 app.use((req, res, next) => {

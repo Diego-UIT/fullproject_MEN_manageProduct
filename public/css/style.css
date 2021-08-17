@@ -1,7 +1,18 @@
+:root {
+    --white-color: #fff;
+    --orange-color: #f68e2e;
+    --text-color-black: #333;
+    --black-color: #000;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    font-family: 'Roboto', sans-serif;
 }
 
 .main {
@@ -10,7 +21,7 @@
 
 .footer-main {
     background-color: #333;
-    color: #fff !important;
+    color: var(--white-color) !important;
     padding: 5px;
 }
 
@@ -26,6 +37,11 @@
     object-fit: fill;
 }
 
+.product-card .product-card-content .name {
+    padding-top: 5px;
+    font-size: 24px;
+}
+
 .btn-qty {
     width: 30px;
     margin: 0 8px;
@@ -36,5 +52,62 @@
 }
 
 #numberCart2 {
-    color: #fff;
+    color: var(--white-color);
+}
+
+
+.new-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.new-title h2 {
+    font-size: 23px;
+    line-height: 19px;
+    font-weight: 600;
+    padding-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: inline-block;
+    position: relative;
+}
+
+.new-title h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+    border: 2px double #ebebeb;
+    border-left: 2px double var(--white-color);
+    border-right: 2px double var(--white-color);
+    display: block;
+    height: 7px;
+}
+
+.pro-price {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--orange-color);
+}
+
+.box-checkout {
+    display: inline-grid; 
+    text-align: right;
+}
+
+.box-fee {
+    padding: 17px 0 21px 0;
+}
+
+.box-fee span {
+    color: #1c1c1c;
+    font-weight: 500;
+    font-size: 22px;
+}
+
+.box-fee .total.amount {
+    font-weight: 600;
+    font-size: 27px;
+    color: var(--orange-color);
 }

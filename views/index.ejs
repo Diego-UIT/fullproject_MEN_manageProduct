@@ -1,5 +1,11 @@
 <div class="container my-5">
+    <%- include('part/message') %>
     <div class="row">
+        <div class="new-title">
+            <div style="justify-content: space-between;">
+                <h2>Tất cả sản phẩm</h2>
+            </div>
+        </div>
         <%
             products.map(product=>{%>
                 <div class="col-sm-6 col-md-4">
@@ -11,10 +17,10 @@
                             <h2 class="name"><%= product.name %></h2>
                             <p class="information"><%= product.information %></p>
                             <p class="price">
-                                <strong><%= product.price %></strong>
+                                <p class="pro-price"><%= product.price %>₫</p>
                             </p>
                         </div>
-                        <a href="/cart/add/<%= product._id %>" class="btn btn-primary addToCart">Add to cart</a>
+                        <a href="/cart/add/<%= product._id %>" class="btn btn-outline-dark addToCart">Thêm vào giỏ hàng</a>
                     </div>
                 </div>
             <%})

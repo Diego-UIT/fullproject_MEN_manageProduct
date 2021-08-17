@@ -1,0 +1,39 @@
+<div class="container">
+    <h2 class="my-5 h2 text-center">Checkout</h2>
+    <div class="row mt-5">
+        <div class="col-md-7">   
+            <form action="/cart/order" method="POST">
+                <div class="form-group mb-4">
+                    <h5>Address: </h5>
+                    <input required type="text" class="form-control" placeholder="Enter your address" name="address">
+                </div>
+                <input type="submit" class="btn btn-danger btn-lg px-4" value="Đặt hàng">
+                <a href="/cart/payment" class="btn btn-warning btn-lg px-4">Payment</a>
+            </form>
+        </div>
+        <div class="col-md-5">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Your cart</span>
+            </h4>
+            <ul class="list-group mb-3 z-depth-1">
+                <% 
+                    products.forEach(product=> {%>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <div>
+                                <h6 class="my-0"><%= product.item.name %>(<%= product.qty %>)</h6>
+                                <small class="text-muted"><%= product.item.information %></small>
+                            </div>
+                            <span class="text-muted"><%= product.item.price*product.qty %>₫</span>
+                        </li>
+                    <%})
+                %>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Total (VND)</span>
+                    <strong style="color: #f68e2e; font-size: 19px;">
+                        <%= total %>₫
+                    </strong>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
