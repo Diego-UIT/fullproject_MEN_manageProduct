@@ -12,7 +12,6 @@ const flash = require('express-flash')
 const passport = require('passport')
 require('./models/passport.model')(passport)
 const app = express()
-const port = process.env.PORT || 3000
 
 app.use(session({
     secret: 'keyboard cat',
@@ -63,7 +62,4 @@ app.use('/user', userRouter)
 
 console.log('Server ok!')
 
-app.listen(port, () => {
-    console.log(`App listening at http://localhost:${port}`)
-  })
-
+app.listen(process.env.PORT || 3000)
