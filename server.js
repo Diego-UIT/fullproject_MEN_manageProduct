@@ -12,7 +12,7 @@ const flash = require('express-flash')
 const passport = require('passport')
 require('./models/passport.model')(passport)
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 
 app.use(session({
     secret: 'keyboard cat',
@@ -39,7 +39,7 @@ app.use(passport.session());
 
 const connectFunction = async() => {
     try {
-        await mongoose.connect('mongodb://localhost/manageProduct', {
+        await mongoose.connect(process.env.PORT, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: false,

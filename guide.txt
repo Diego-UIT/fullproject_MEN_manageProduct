@@ -5,3 +5,4 @@ npm install passport-github
 npm install passport-google-oauth20
 npm install passport-facebook
 npm install paypal-rest-sdk
+mongodb://localhost/manageProduct
