@@ -1,4 +1,5 @@
 const express = require('express')
+require('dotenv').config()
 var expressLayouts = require('express-ejs-layouts')
 const indexRouter = require('./routes/index')
 const categoryRouter = require('./routes/category')
@@ -38,11 +39,9 @@ app.use(passport.session());
 
 const connectFunction = async() => {
     try {
-        await mongoose.connect(process.env.PORT, {
+        await mongoose.connect(process.env.STR_CONNECT, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            useFindAndModify: false,
-            useCreateIndex: true
         })
         console.log('Connect database successfully!')
     }
@@ -62,4 +61,4 @@ app.use('/user', userRouter)
 
 console.log('Server ok!')
 
-app.listen(process.env.PORT || 3000)
+app.listen(3000)
