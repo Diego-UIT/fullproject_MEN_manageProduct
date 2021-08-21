@@ -1,6 +1,6 @@
 const express = require('express')
 require('dotenv').config()
-var expressLayouts = require('express-ejs-layouts')
+const expressLayouts = require('express-ejs-layouts')
 const indexRouter = require('./routes/index')
 const categoryRouter = require('./routes/category')
 const productRouter = require('./routes/product')
