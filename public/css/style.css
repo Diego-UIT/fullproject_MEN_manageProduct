@@ -88,7 +88,7 @@ html {
 .pro-price {
     font-size: 20px;
     font-weight: 600;
-    color: var(--orange-color);
+    color: #f68e2e;
 }
 
 .box-checkout {
@@ -109,48 +109,12 @@ html {
 .box-fee .total.amount {
     font-weight: 600;
     font-size: 27px;
-    color: var(--orange-color);
+    color: #f68e2e;
 } */
-
-
-/******************************************************************
-  Template Name: Ogani
-  Description:  Ogani eCommerce  HTML Template
-  Author: Colorlib
-  Author URI: https://colorlib.com
-  Version: 1.0
-  Created: Colorlib
-******************************************************************/
-
-/*------------------------------------------------------------------
-[Table of contents]
-
-1.  Template default CSS
-	1.1	Variables
-	1.2	Mixins
-	1.3	Flexbox
-	1.4	Reset
-2.  Helper Css
-3.  Header Section
-4.  Hero Section
-5.  Service Section
-6.  Categories Section
-7.  Featured Section
-8.  Latest Product Section
-9.  Contact
-10.  Footer Style
--------------------------------------------------------------------*/
-
-/*----------------------------------------*/
-/* Template default CSS
-/*----------------------------------------*/
 
 html,
 body {
 	height: 100%;
-	font-family: "Cairo", sans-serif;
-	-webkit-font-smoothing: antialiased;
-	font-smoothing: antialiased;
 }
 
 h1,
@@ -162,7 +126,6 @@ h6 {
 	margin: 0;
 	color: #111111;
 	font-weight: 400;
-	font-family: "Cairo", sans-serif;
 }
 
 h1 {
@@ -191,7 +154,6 @@ h6 {
 
 p {
 	font-size: 16px;
-	font-family: "Cairo", sans-serif;
 	color: #6f6f6f;
 	font-weight: 400;
 	line-height: 26px;
@@ -214,7 +176,7 @@ a:hover,
 a:focus {
 	text-decoration: none;
 	outline: none;
-	color: #ffffff;
+	color: #fff;
 }
 
 ul,
@@ -251,6 +213,27 @@ ol {
 }
 
 .set-bg {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top center;
+}
+
+.set-bg-checkout {
+	background-image: url('http://localhost:3000/img/breadcrumb.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top center;
+}
+
+.set-bg-allProduct {
+	background-image: url('http://localhost:3000/img/breadcrumb.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top center;
+}
+
+.set-bg-product-detail {
+	background-image: url('http://localhost:3000/img/breadcrumb.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: top center;
@@ -414,13 +397,13 @@ ol {
 .header__top__right__social {
 	position: relative;
 	display: inline-block;
-	margin-right: 35px;
+	padding-left: 25px;
 }
 
 .header__top__right__social:after {
 	position: absolute;
-	right: -20px;
-	top: 1px;
+	left: 6px;
+	top: 3px;
 	height: 20px;
 	width: 1px;
 	background: #000000;
@@ -446,6 +429,11 @@ ol {
 	cursor: pointer;
 }
 
+.header__top__right__language a {
+	font-size: 14px;
+	color: #1c1c1c;
+}
+
 .header__top__right__language:hover ul {
 	top: 23px;
 	opacity: 1;
@@ -455,7 +443,7 @@ ol {
 .header__top__right__language:after {
 	position: absolute;
 	right: -21px;
-	top: 1px;
+	top: 3px;
 	height: 20px;
 	width: 1px;
 	background: #000000;
@@ -633,23 +621,23 @@ ol {
 }
 
 .header__cart ul li a i {
-	font-size: 18px;
+	font-size: 25px;
 	color: #1c1c1c;
 }
 
-.header__cart ul li a span {
-	height: 13px;
-	width: 13px;
+.header__cart ul li a #numberCart {
+	height: 15px;
+	width: 15px;
 	background: #7fad39;
-	font-size: 10px;
+	font-size: 13px;
 	color: #ffffff;
 	line-height: 13px;
 	text-align: center;
-	font-weight: 700;
+	font-weight: 600;
 	display: inline-block;
 	border-radius: 50%;
 	position: absolute;
-	top: 0;
+	top: -4px;
 	right: -12px;
 }
 
@@ -781,11 +769,11 @@ ol {
 }
 
 .hero__search__form form input {
-	width: 70%;
+	width: 100%;
 	border: none;
 	height: 48px;
 	font-size: 16px;
-	color: #b2b2b2;
+	color: #000;
 	padding-left: 20px;
 }
 
@@ -1527,8 +1515,6 @@ ol {
 }
 
 .filter__item {
-	padding-top: 45px;
-	border-top: 1px solid #ebebeb;
 	padding-bottom: 20px;
 }
 
@@ -1728,6 +1714,7 @@ ol {
 .product__pagination,
 .blog__pagination {
 	padding-top: 10px;
+	text-align: center;
 }
 
 .product__pagination a,
@@ -1871,7 +1858,6 @@ ol {
 
 .product__details__quantity {
 	display: inline-block;
-	margin-right: 6px;
 }
 
 .pro-qty {
@@ -1883,6 +1869,12 @@ ol {
 	background: #f5f5f5;
 	margin-bottom: 5px;
 }
+
+.btn-qty {
+    width: 30px;
+    margin: 0 8px;
+}
+
 
 .pro-qty input {
 	height: 100%;
@@ -1918,7 +1910,7 @@ ol {
 	left: 0;
 	top: 12px;
 	height: 1px;
-	width: 370px;
+	width: 500px;
 	background: #ebebeb;
 	content: "";
 }
@@ -1928,7 +1920,7 @@ ol {
 	right: 0;
 	top: 12px;
 	height: 1px;
-	width: 370px;
+	width: 500px;
 	background: #ebebeb;
 	content: "";
 }
@@ -2781,7 +2773,7 @@ ol {
 	margin-bottom: 30px;
 }
 
-.footer__widget form input {
+.footer__widget .email-input-footer {
 	width: 100%;
 	font-size: 16px;
 	padding-left: 20px;
@@ -3571,4 +3563,117 @@ ol {
 	.blog__details__hero__text h2 {
 		font-size: 24px;
 	}
+}
+
+/* ==== [LOGIN PAGE & REGISTER] ==== */
+.page-login {
+    max-width: 750px;
+    margin: auto;
+}
+
+.page-login 
+.page-login-title,
+.page-login-social {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.title-head {
+    font-size: 28px;
+    line-height: 28px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.page-login .page-login-social .social-login {
+    display: inline-block;
+    transition: all 150ms ease-in-out;
+}
+
+.page-login .page-login-social .social-login:nth-child(2) {
+    margin-left: 10px;
+}
+
+.page-login .page-login-social .social-login img {
+    width: 130px;
+    height: 37px;
+}
+
+.page-login .page-login-social .social-login img:hover {
+    opacity: .8;
+}
+
+.page-login .line-break {
+    max-width: 310px;
+    margin: 20px auto 20px;
+    text-align: center;
+    position: relative;
+}
+
+.page-login .line-break span {
+    display: inline-block;
+    font-size: 12px;
+    color: #777;
+    padding: 1px 20px;
+    border-radius: 15px;
+    background-color: #fff;
+    border: 1px solid #dadade;
+}
+
+.page-login .line-break span::before {
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: #d6d6d6;
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 10px;
+}
+
+/* FORGOT-PASSWORD */
+.forgot-password {
+    margin-top: 20px;
+    color: #f68e2e;
+    display: block;
+    font-weight: 500;
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+    transition: all .1s linear;
+}
+
+.forgot-password:hover {
+    color: #000;
+}
+/* TEXT-LOGIN-HERE */
+.text-login p {
+    font-size: 15px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.text-login p a {
+    color: #7fad39;
+}
+.text-login p a:hover {
+    color: #000;
+    transition: all .1s linear;
+}
+
+/* TEXT-REGISTER  */
+.text-register p {
+    font-size: 15px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.text-register p a {
+    color: #7fad39;
+}
+.text-register p a:hover {
+    color: #000;
+    transition: all .1s linear;
 }

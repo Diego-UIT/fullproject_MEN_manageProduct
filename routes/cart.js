@@ -93,6 +93,7 @@ router.get('/checkout', check, (req, res) => {
     res.render('carts/checkout', {products: cart.items, total: total})
 })
 
+
 router.post('/order', check, async(req, res) => {
     try {
         const cart = new cartModel(req.session.cart)
@@ -181,7 +182,7 @@ router.get('/success',(req,res)=>{
             console.log("Get Payment Response");
             console.log(JSON.stringify(payment));
             req.session.cart = null
-            req.flash("success","Paypal successfully")
+            req.flash("success","Payment successfully")
             res.redirect('/')
         }
     });

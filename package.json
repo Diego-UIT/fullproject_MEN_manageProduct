@@ -9,6 +9,7 @@
   "author": "Minh Chuong",
   "license": "ISC",
   "devDependencies": {
+    "locus": "^2.0.4",
     "nodemon": "^2.0.12"
   },
   "dependencies": {

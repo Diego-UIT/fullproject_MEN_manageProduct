@@ -5,4 +5,6 @@ npm install passport-github
 npm install passport-google-oauth20
 npm install passport-facebook
 npm install paypal-rest-sdk
+npm install locus --save-dev
+mongodb+srv://mchuongK13:Huynhchuong645@cluster0.3lm0p.mongodb.net/manageProduct?retryWrites=true&w=majority
 mongodb://localhost/manageProduct

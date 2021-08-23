@@ -1,20 +1,28 @@
-<div class="container mt-5 w-50">
-    <h1>Register</h1>
-    <form action="/user/" method="POST">
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" placeholder="User name" name="username" value="<%= user.username %>">
-            <label>User name</label>
+<section class="page-login">
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-login-title">
+                    <h3 class="title-head">Register</h3>
+                </div>
+                <form action="/user/" method="POST">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" placeholder="User name" name="username" value="<%= user.username %>">
+                        <label>User name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" placeholder="Email" name="email" value="<%= user.email %>">
+                        <label>Email</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" placeholder="Password" name="password" value="<%= user.password %>">
+                        <label>Password</label>
+                    </div>
+                    <div>
+                        <button type="submit" class="form-control site-btn">Register</button>
+                    </div>
+                </form>            
+            </div>
         </div>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" placeholder="Email" name="email" value="<%= user.email %>">
-            <label>Email</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="password" class="form-control" placeholder="Password" name="password" value="<%= user.password %>">
-            <label>Password</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="submit" class="form-control btn btn-primary" value="Save"></input>
-        </div>
-    </form>
-</div>
+    </div>
+</section>

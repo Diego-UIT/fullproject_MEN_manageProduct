@@ -13,6 +13,42 @@ router.get('/', async(req, res) => {
     }
 })
 
+// Search product
+router.get('/search', async(req, res) => {
+    const name_search = req.query.name 
+
+    const products = await productModel.find().populate('category',['name'])
+	const result = products.filter((product) => {
+		return product.category.name.toLowerCase().indexOf(name_search.toLowerCase()) !== -1
+    })
+    console.log(result)
+    res.render('products/search', {products: result});
+    
+})
+
+// All product
+router.get('/allProduct', async(req, res) => {
+    try {
+        const products = await productModel.find()
+        res.render('products/allProduct', {products: products})
+    } catch(e) {
+        console.log(e)
+        res.redirect('/')
+    }
+})
+
+// Product detail
+router.get('/:id', async(req, res) => {
+    try {
+        const product = await productModel.findById(req.params.id)
+        res.render('products/productDetail', {product: product})
+    } catch(e) {
+        console.log(e)
+        res.redirect('/')
+    }
+})
+
+
 // Add product
 router.get('/add', async(req, res) => {
     const product = new productModel()

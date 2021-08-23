@@ -1,5 +1,6 @@
 const express = require('express')
 const userModel = require('../models/user.model')
+const orderModel = require('../models/order.model')
 const bcrypt = require('bcrypt')
 const passport = require('passport')
 const router = express.Router()
@@ -8,6 +9,17 @@ router.get('/', async(req, res) => {
     try {
         const users = await userModel.find()
         res.render('users/index', {users: users})
+    } catch(e) {
+        console.log(e)
+        res.redirect('/')
+    }
+})
+
+// Order of user
+router.get('/order', async(req, res) => {
+    try {
+        const orders = await orderModel.find()
+        res.render('users/order', {orders: orders})
     } catch(e) {
         console.log(e)
         res.redirect('/')
@@ -28,6 +40,7 @@ router.post('/', async(req, res) => {
             username: req.body.username,
             email: req.body.email,
             password: hashedPassword,
+            level: 0
         })
         await user.save()
         req.flash('success', 'Add user successful!')
@@ -66,7 +79,7 @@ function check(req, res, next) {
     if(req.isAuthenticated()) return next()
     res.redirect('/user/login')
 }
-router.get('/profile', check, (req, res) => {
+router.get('/profile', check, async(req, res) => {
     let value = "No name"
     if (req.user) {
         value = req.user.username

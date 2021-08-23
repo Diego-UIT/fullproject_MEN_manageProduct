@@ -10,7 +10,6 @@ router.get('/', async(req, res) => {
         console.log(e)
         res.redirect('/')
     }
- 
 })
 
 module.exports = router

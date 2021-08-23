@@ -14,25 +14,26 @@
     <input type="text" class="form-control" placeholder="Product quantity" name="quantity" value="<%= product.quantity %>">
     <label>Product quantity</label>
 </div>
-<div class="mb-3">
-    <select class="form-select" name="category">
-        <%
-            categories.map(category=>{%>
-                <%
-                    if (category.id == product.category) {%>
-                        <option selected value="<%= category._id %>"><%= category.name %></option>
-                    <%}
-                    else {%>
-                        <option value="<%= category._id %>"><%= category.name %></option>
-                    <%}
-                %>
-            <%})
-        %>   
-      </select>
-</div>
+<select class="form-control mb-3" name="category">
+    <%
+        categories.map(category=>{%>
+            <%
+                if (category.id == product.category) {%>
+                    <option selected value="<%= category._id %>"><%= category.name %></option>
+                <%}
+                else {%>
+                    <option value="<%= category._id %>"><%= category.name %></option>
+                <%}
+            %>
+        <%})
+    %>   
+  </select>
 <div class="mb-3">
     <input type="file" class="form-control filepond" name="image">
 </div>
-<div class="form-floating mb-3">
-    <input type="submit" class="form-control btn btn-primary" value="Save"></input>
+<div class="mb-3">
+    <img src="<%= product.imageSrc %>" width="200px">
+</div>
+<div>
+    <button type="submit" class="form-control site-btn">Save</button>
 </div
