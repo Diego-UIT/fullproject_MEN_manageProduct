@@ -46,7 +46,7 @@ module.exports = function(passport) {
     passport.use(new githubStrategy({
         clientID: '18ea0eb0b6e3d143f6d4',
         clientSecret: 'db53c19cf2a82c32128d78d5bb247ade7bfc49eb',
-        callbackURL: 'http://localhost:3000/user/github/callback'
+        callbackURL: 'https://ogani-website-men.herokuapp.com/user/github/callback'
     },
     async function(accessToken, refreshToken, profile, done) {
         //console.log(profile)
@@ -70,7 +70,7 @@ module.exports = function(passport) {
     passport.use(new googleStrategy({
         clientID: "1094401926048-enql47tdlq4p9e4jnqpk3n6hlrsb7n59.apps.googleusercontent.com",
         clientSecret: "MBgxPEDASPgFp3KdalnO8dYj",
-        callbackURL: "http://localhost:3000/user/google/callback"
+        callbackURL: "https://ogani-website-men.herokuapp.com/user/google/callback"
     },
     async function(accessToken, refreshToken, profile, done){
         // console.log(profile)
@@ -94,7 +94,7 @@ module.exports = function(passport) {
     passport.use(new facebookStrategy({
         clientID: "519841889305783",
         clientSecret: "97d605156701254b418ab0d797fb8f36",
-        callbackURL: "http://localhost:3000/user/facebook/callback"
+        callbackURL: "https://ogani-website-men.herokuapp.com/user/facebook/callback"
     },
     async function(accessToken, refreshToken, profile, done){
         console.log(profile)

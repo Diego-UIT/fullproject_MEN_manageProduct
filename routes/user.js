@@ -15,8 +15,13 @@ router.get('/', async(req, res) => {
     }
 })
 
+function check(req, res, next) {
+    if(req.isAuthenticated()) return next()
+    res.redirect('/user/login')
+}
+
 // Order of user
-router.get('/order', async(req, res) => {
+router.get('/order', check, async(req, res) => {
     try {
         const orders = await orderModel.find()
         res.render('users/order', {orders: orders})
@@ -75,10 +80,6 @@ router.post('/login', passport.authenticate('local', {
     failureFlash: true
 }))
 
-function check(req, res, next) {
-    if(req.isAuthenticated()) return next()
-    res.redirect('/user/login')
-}
 router.get('/profile', check, async(req, res) => {
     let value = "No name"
     if (req.user) {

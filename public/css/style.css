@@ -219,21 +219,21 @@ ol {
 }
 
 .set-bg-checkout {
-	background-image: url('http://localhost:3000/img/breadcrumb.jpg');
+	background-image: url('https://ogani-website-men.herokuapp.com/img/breadcrumb.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: top center;
 }
 
 .set-bg-allProduct {
-	background-image: url('http://localhost:3000/img/breadcrumb.jpg');
+	background-image: url('https://ogani-website-men.herokuapp.com/img/breadcrumb.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: top center;
 }
 
 .set-bg-product-detail {
-	background-image: url('http://localhost:3000/img/breadcrumb.jpg');
+	background-image: url('https://ogani-website-men.herokuapp.com/img/breadcrumb.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: top center;

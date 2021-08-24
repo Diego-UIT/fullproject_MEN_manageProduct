@@ -125,8 +125,8 @@ router.get('/payment', (req, res) => {
             "payment_method": "paypal"
         },
         "redirect_urls": {
-            "return_url": "http://localhost:3000/cart/success",
-            "cancel_url": "http://localhost:3000/cart/cancel"
+            "return_url": "https://ogani-website-men.herokuapp.com/cart/success",
+            "cancel_url": "https://ogani-website-men.herokuapp.com/cart/cancel"
         },
         "transactions": [{
             "item_list": {
