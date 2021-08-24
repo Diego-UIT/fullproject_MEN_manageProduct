@@ -68,8 +68,8 @@ module.exports = function(passport) {
     }))
 
     passport.use(new googleStrategy({
-        clientID: "1094401926048-enql47tdlq4p9e4jnqpk3n6hlrsb7n59.apps.googleusercontent.com",
-        clientSecret: "MBgxPEDASPgFp3KdalnO8dYj",
+        clientID: "709867983129-06sptsla4tmp4nr7cggumr0gdtkbsdb5.apps.googleusercontent.com",
+        clientSecret: "Z76uEOubiwsRvwO8xuiQ85pI",
         callbackURL: "https://ogani-website-men.herokuapp.com/user/google/callback"
     },
     async function(accessToken, refreshToken, profile, done){
@@ -92,8 +92,8 @@ module.exports = function(passport) {
     }))
 
     passport.use(new facebookStrategy({
-        clientID: "519841889305783",
-        clientSecret: "97d605156701254b418ab0d797fb8f36",
+        clientID: "429528125080453",
+        clientSecret: "a15a117ef60b56ad83ee989d2bbd7ac4",
         callbackURL: "https://ogani-website-men.herokuapp.com/user/facebook/callback"
     },
     async function(accessToken, refreshToken, profile, done){
