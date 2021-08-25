@@ -2,7 +2,12 @@ const express = require('express')
 const categoryModel = require('../models/category.model')
 const router = express.Router()
 
-router.get('/', async(req, res) => {
+function check(req, res, next) {
+    if(req.isAuthenticated()) return next()
+    res.redirect('/user/login')
+}
+
+router.get('/', check, async(req, res) => {
     try {
         const categories = await categoryModel.find()
         res.render('categories/list', {categories: categories})

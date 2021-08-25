@@ -1,65 +1,63 @@
-<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">
-        <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
-        Evo Furniture
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              User
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <li><a class="dropdown-item" href="/user/profile">Profile</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="/user">List users</a></li>
-              <li><a class="dropdown-item" href="/user/login">Login</a></li>
-              <li><a class="dropdown-item" href="/user/register">Register</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="/user/logout">Logout</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/product">Products</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/category">Categories</a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link" href="/cart">
-              Carts
-              <span id="numberCart">
-                <span id="numberCart2">
-                  (<%
-                  if(session.cart){%>
-                      <%= session.cart.items.length %>
-                    <%}
-                    else{%>
-                      0
-                  <%}
-                   %>)
-                </span>
-              </span>
-            </a>       
-          </li>
-          
-        </ul>
-      </div>
-    </div>
-  </nav> -->
-
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
     </div>
+
+    <!-- Humberger Begin -->
+    <div class="humberger__menu__overlay"></div>
+    <div class="humberger__menu__wrapper">
+        <a href="/"><div class="humberger__menu__logo set-bg-logo"></div></a>
+        <div class="humberger__menu__cart">
+            <ul>
+                <li>
+                    <a href="/cart"><i class="fa fa-shopping-bag"></i> 
+                        <span id="numberCart">
+                            <span id="numberCart2">
+                            <%
+                            if(session.cart){%>
+                                <%= session.cart.items.length %>
+                                <%}
+                                else{%>
+                                0
+                            <%}
+                            %>
+                            </span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="humberger__menu__widget">
+            <div class="header__top__right__language">
+                <a href="/user/login"><i class="fa fa-user"></i> Login</a>
+            </div>
+            <div class="header__top__right__auth">
+                <a href="/user/register"><i class="fas fa-user-plus"></i> Register</a>
+            </div>
+        </div>
+        <nav class="humberger__menu__nav mobile-menu">
+            <ul>
+                <li class="active"><a href="/">Home</a></li>
+                <li><a href="/product/allProduct">Shop</a></li>
+                <li><a href="#">Pages</a>
+                    <ul class="header__menu__dropdown">
+                        <li><a href="/product">Products</a></li>
+                        <li><a href="/category">Categories</a></li>
+                        <li><a href="/user">Users</a></li>
+                    </ul>
+                </li>
+                <li><a href="/user/order">Orders</a></li>
+            </ul>
+        </nav>
+        <div id="mobile-menu-wrap"></div>
+        <div class="humberger__menu__contact">
+            <ul>
+                <li><i class="fa fa-envelope"></i> minhchuong.org@gmail.com</li>
+                <li>Free Shipping for all Order of 99.000₫</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Humberger End -->
 
     <!-- Header Section Begin -->
     <header class="header">
@@ -93,9 +91,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="header__logo">
-                        <a href="/"><img src="img/logo.png" alt=""></a>
-                    </div>
+                    <a href="/"><div class="header__logo set-bg-logo"></div></a>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
@@ -136,9 +132,15 @@
                     </div>
                 </div>
             </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
         </div>
     </header>
     <!-- Header Section End -->
+
+    
+
 
     
     

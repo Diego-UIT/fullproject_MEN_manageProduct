@@ -1,27 +1,29 @@
 <div class="container mt-5 mb-5">
     <a href="/category/add" class="btn btn-outline-success btn-lg">Add New Category</a>
     <h3 class="title-head text-center mb-4 mt-4">List categories</h3>
-    <table class="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th scope="col">Category name</th>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-          <%
-          categories.map(category=>{%>
-                <tr>
-                    <th><%= category.name %></th>
-                    <td>
-                        <a class="btn btn-warning" href="/category/edit/<%= category._id %>">Edit</a>
-                        <a class="btn btn-danger" data-id="<%= category._id %>" data-bs-toggle="modal" data-bs-target="#deleteModal">Xóa</a>
-                    </td>
-                </tr>
-            <%})
-          %>
-      </tbody>
-    </table>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Category name</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            <%
+            categories.map(category=>{%>
+                  <tr>
+                      <th><%= category.name %></th>
+                      <td>
+                          <a class="btn btn-warning" href="/category/edit/<%= category._id %>">Edit</a>
+                          <a class="btn btn-danger" data-id="<%= category._id %>" data-bs-toggle="modal" data-bs-target="#deleteModal">Xóa</a>
+                      </td>
+                  </tr>
+              <%})
+            %>
+        </tbody>
+      </table>
+    </div>
 </div>
 <!-- Modal confirm delete category -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">

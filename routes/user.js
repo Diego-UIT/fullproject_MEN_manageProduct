@@ -5,7 +5,12 @@ const bcrypt = require('bcrypt')
 const passport = require('passport')
 const router = express.Router()
 
-router.get('/', async(req, res) => {
+function check(req, res, next) {
+    if(req.isAuthenticated()) return next()
+    res.redirect('/user/login')
+}
+
+router.get('/', check, async(req, res) => {
     try {
         const users = await userModel.find()
         res.render('users/index', {users: users})
@@ -14,11 +19,6 @@ router.get('/', async(req, res) => {
         res.redirect('/')
     }
 })
-
-function check(req, res, next) {
-    if(req.isAuthenticated()) return next()
-    res.redirect('/user/login')
-}
 
 // Order of user
 router.get('/order', check, async(req, res) => {

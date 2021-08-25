@@ -3,7 +3,12 @@ const productModel = require('../models/product.model')
 const categoryModel = require('../models/category.model')
 const router = express.Router()
 
-router.get('/', async(req, res) => {
+function check(req, res, next) {
+    if(req.isAuthenticated()) return next()
+    res.redirect('/user/login')
+}
+
+router.get('/', check, async(req, res) => {
     try {
         const products = await productModel.find().populate('category',['name'])
         res.render('products/list', {products: products})
