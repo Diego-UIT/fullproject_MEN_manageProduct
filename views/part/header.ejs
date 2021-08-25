@@ -7,26 +7,6 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <a href="/"><div class="humberger__menu__logo set-bg-logo"></div></a>
-        <div class="humberger__menu__cart">
-            <ul>
-                <li>
-                    <a href="/cart"><i class="fa fa-shopping-bag"></i> 
-                        <span id="numberCart">
-                            <span id="numberCart2">
-                            <%
-                            if(session.cart){%>
-                                <%= session.cart.items.length %>
-                                <%}
-                                else{%>
-                                0
-                            <%}
-                            %>
-                            </span>
-                        </span>
-                    </a>
-                </li>
-            </ul>
-        </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
                 <a href="/user/login"><i class="fa fa-user"></i> Login</a>
