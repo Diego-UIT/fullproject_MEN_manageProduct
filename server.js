@@ -61,4 +61,4 @@ app.use('/user', userRouter)
 
 console.log('Server ok!')
 
-app.listen(3000)
+app.listen(PORT || 3000)
