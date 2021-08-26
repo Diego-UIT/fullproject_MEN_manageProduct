@@ -21,10 +21,12 @@ router.get('/', check, async(req, res) => {
 // Search product
 router.get('/search', async(req, res) => {
     const name_search = req.query.name 
+    const price_search = req.query.price
 
     const products = await productModel.find().populate('category',['name'])
 	const result = products.filter((product) => {
-		return product.category.name.toLowerCase().indexOf(name_search.toLowerCase()) !== -1
+		return product.category.name.toLowerCase().indexOf(name_search.toLowerCase()) !== -1 
+        && product.price === parseInt(price_search)
     })
     console.log(result)
     res.render('products/search', {products: result});

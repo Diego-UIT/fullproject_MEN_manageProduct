@@ -39,7 +39,7 @@
                                     products.forEach(product=> {%>
                                         <li>
                                             <%= product.item.name %> (<%= product.qty %>)
-                                            <span><%= product.item.price*product.qty %>₫</span>
+                                            <span><%= Intl.NumberFormat().format(product.item.price*product.qty) %>₫</span>
                                         </li>
                                     <%})
                                 %>

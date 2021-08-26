@@ -40,7 +40,7 @@
                                             <h5><%= cart.item.name %></h5>
                                         </td>
                                         <td class="shoping__cart__price">
-                                            <%= cart.item.price %>₫
+                                            <%= Intl.NumberFormat().format(cart.item.price) %>₫
                                         </td>
                                         <td class="shoping__cart__quantity">
                                             <div class="d-flex" style="justify-content: center;">
@@ -81,7 +81,7 @@
                     <ul>
                         <li>Total 
                             <strong id="total1">
-                                <span id="total2" class="total amount"><%= priceTotal %>₫</span>
+                                <span id="total2" class="total amount"><%= Intl.NumberFormat().format(priceTotal) %>₫</span>
                             </strong>
                         </li>
                     </ul>

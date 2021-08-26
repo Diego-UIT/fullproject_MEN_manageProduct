@@ -45,7 +45,7 @@
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star-half-o"></i>
                     </div>
-                    <div class="product__details__price"><%= product.price %>₫</div>
+                    <div class="product__details__price"><%= Intl.NumberFormat().format(product.price) %>₫</div>
                     <p><%= product.information %></p>
                     <div class="product__details__quantity">
                         <div class="quantity">
