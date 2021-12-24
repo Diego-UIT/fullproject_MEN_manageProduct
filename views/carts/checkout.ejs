@@ -24,11 +24,28 @@
             <form action="/cart/order" method="POST">
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
-                            <div class="checkout__input">
-                                <p>Address<span>*</span></p>
-                                <input required type="text" class="form-control" placeholder="Enter your address" name="address">
+                        <div class="checkout__input">
+                            <p>Full Name<span>*</span></p>
+                            <input required type="text" class="form-control" placeholder="Enter your name" name="name">
+                        </div>
+                        <div class="checkout__input">
+                            <p>Address<span>*</span></p>
+                            <input required type="text" class="form-control" placeholder="Enter your address" name="address">
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>Phone<span>*</span></p>
+                                    <input required type="text" class="form-control" placeholder="Enter your phone" name="phone">
+                                </div>
                             </div>
-                        </form>
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>Email<span>*</span></p>
+                                    <input required type="text" class="form-control" placeholder="Enter your email" name="email">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="checkout__order">

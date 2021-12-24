@@ -27,7 +27,7 @@ router.get('/add/:id', async(req, res) => {
         const cart = new cartModel(req.session.cart ? req.session.cart : {items: []})
         cart.add(product, req.params.id, product.imageSrc)
         req.session.cart = cart
-        res.send('Add success!')
+        res.send('Add cart successfully!')
     } catch(e) {
         console.log(e)
         res.redirect('/')
@@ -41,7 +41,7 @@ router.put('/reduce/:id', (req, res) => {
         const cart = new cartModel(req.session.cart)
         cart.reduce(id)
         req.session.cart = cart
-        res.send('Reduce successful!')
+        res.send('Reduce successfully')
     }
     catch(e) {
         console.log(e)
@@ -56,7 +56,7 @@ router.put('/increase/:id', (req, res) => {
         const cart = new cartModel(req.session.cart)
         cart.increase(id)
         req.session.cart = cart
-        res.send('Increase successful!')
+        res.send('Increase successfully')
     }
     catch(e) {
         console.log(e)
@@ -93,7 +93,6 @@ router.get('/checkout', check, (req, res) => {
     res.render('carts/checkout', {products: cart.items, total: total})
 })
 
-
 router.post('/order', check, async(req, res) => {
     try {
         const cart = new cartModel(req.session.cart)
@@ -125,8 +124,8 @@ router.get('/payment', (req, res) => {
             "payment_method": "paypal"
         },
         "redirect_urls": {
-            "return_url": "https://ogani-website-men.herokuapp.com/cart/success",
-            "cancel_url": "https://ogani-website-men.herokuapp.com/cart/cancel"
+            "return_url": "http://localhost:4000/cart/success",
+            "cancel_url": "http://localhost:4000/cart/cancel"
         },
         "transactions": [{
             "item_list": {

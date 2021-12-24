@@ -18,76 +18,96 @@
 
 <!-- Shoping Cart Section Begin -->
 <section class="shoping-cart spad">
+    <%- include('../part/message') %>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="shoping__cart__table table-responsive">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th class="shoping__product">Products</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <%
-                                carts.map(cart=>{%>
-                                    <tr id="tr_cart_<%= cart.id %>">
-                                        <td class="shoping__cart__item">
-                                            <img src="<%= cart.imageSrc %>" width="100px" style="border-radius: 50%">
-                                            <h5><%= cart.item.name %></h5>
-                                        </td>
-                                        <td class="shoping__cart__price">
-                                            <%= Intl.NumberFormat().format(cart.item.price) %>₫
-                                        </td>
-                                        <td class="shoping__cart__quantity">
-                                            <div class="d-flex" style="justify-content: center;">
-                                                <form action="/cart/reduce/<%= cart.id %>?_method=PUT" method="POST" class="reduceCart" data-id="<%= cart.id %>">
-                                                    <input type="submit" value="-" class="btn btn-sm btn-outline-primary btn-qty">
-                                                </form>
-                                                <span id="qty<%= cart.id %>">
-                                                    <span id="qty2<%= cart.id %>"><%= cart.qty %></span>
-                                                </span>
-                                                <form action="/cart/increase/<%= cart.id %>?_method=PUT" method="POST" class=" increaseCart" data-id="<%= cart.id %>">
-                                                    <input type="submit" value="+" class="btn btn-sm btn-outline-primary btn-qty">
-                                                </form>
-                                            </div>
-                                        </td>
-                                        <td class="shoping__cart__item__close">
-                                            <form action="/cart/<%= cart.id %>" method="POST" data-id="<%= cart.id %>" class="deleteCart">
-                                                <input type="submit" value="Delete" class="btn btn-danger">
-                                            </form>
-                                        </td>
+                    <%
+                        if (carts.length == 0) {%>
+                            <div class="text-center">
+                                <img class="mb-3" src="https://salt.tikicdn.com/desktop/img/mascot@2x.png" width=200>
+                                <p>There are no products in your cart.</p>
+                                <a href="/product/allProduct" class="btn btn-outline-primary">CONTINUE SHOPPING</a>
+                            </div>
+                        <%}
+                        else {%>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="shoping__product">Products</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th></th>
                                     </tr>
-                                <%})
-                            %>
-                        </tbody>
-                    </table>
+                                </thead>
+                                <tbody>
+                                    <%
+                                    carts.map(cart=>{%>
+                                        <tr id="tr_cart_<%= cart.id %>">
+                                            <td class="shoping__cart__item">
+                                                <img src="<%= cart.imageSrc %>" width="100px" style="border-radius: 50%">
+                                                <h5><%= cart.item.name %></h5>
+                                            </td>
+                                            <td class="shoping__cart__price">
+                                                <%= Intl.NumberFormat().format(cart.item.price) %>₫
+                                            </td>
+                                            <td class="shoping__cart__quantity">
+                                                <div class="d-flex" style="justify-content: center;">
+                                                    <form action="/cart/reduce/<%= cart.id %>?_method=PUT" method="POST" class="reduceCart" data-id="<%= cart.id %>">
+                                                        <input type="submit" value="-" class="btn btn-sm btn-outline-primary btn-qty">
+                                                    </form>
+                                                    <span id="qty<%= cart.id %>">
+                                                        <span id="qty2<%= cart.id %>"><%= cart.qty %></span>
+                                                    </span>
+                                                    <form action="/cart/increase/<%= cart.id %>?_method=PUT" method="POST" class=" increaseCart" data-id="<%= cart.id %>">
+                                                        <input type="submit" value="+" class="btn btn-sm btn-outline-primary btn-qty">
+                                                    </form>
+                                                </div>
+                                            </td>
+                                            <td class="shoping__cart__item__close">
+                                                <form action="/cart/<%= cart.id %>" method="POST" data-id="<%= cart.id %>" class="deleteCart">
+                                                    <input type="submit" value="Delete" class="btn btn-danger">
+                                                </form>
+                                            </td>
+                                        </tr> 
+                                    <%})
+                                %>  
+                                </tbody>
+                            </table>
+                        <%}
+                    %>   
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12">
-                <div class="shoping__cart__btns">
-                    <a href="/product/allProduct" class="btn btn-outline-dark">CONTINUE SHOPPING</a>
-                </div>
-            </div>
-            <div class="col-6"></div>
-            <div class="col-lg-6">
-                <div class="shoping__checkout">
-                    <h5>Cart Total</h5>
-                    <ul>
-                        <li>Total 
-                            <strong id="total1">
-                                <span id="total2" class="total amount"><%= Intl.NumberFormat().format(priceTotal) %>₫</span>
-                            </strong>
-                        </li>
-                    </ul>
-                    <a href="/cart/checkout" class="primary-btn">PROCEED TO CHECKOUT</a>
-                </div>
-            </div>
+            <%
+                if (carts.length == 0) {%>
+                    
+                <%}
+                else {%>
+                    <div class="col-lg-12">
+                        <div class="shoping__cart__btns">
+                            <a href="/product/allProduct" class="btn btn-outline-dark">CONTINUE SHOPPING</a>
+                        </div>
+                    </div>
+                    <div class="col-6"></div>
+                    <div class="col-lg-6">
+                        <div class="shoping__checkout">
+                            <h5>Cart Total</h5>
+                            <ul>
+                                <li>Total 
+                                    <strong id="total1">
+                                        <span id="total2" class="total amount"><%= Intl.NumberFormat().format(priceTotal) %>₫</span>
+                                    </strong>
+                                </li>
+                            </ul>
+                            <a href="/cart/checkout" class="primary-btn">PROCEED TO CHECKOUT</a>
+                        </div>
+                    </div>
+                <%}
+            %>   
+            
         </div>
     </div>
 </section>

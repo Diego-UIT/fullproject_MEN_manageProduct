@@ -26,7 +26,6 @@ $('.increaseCart').on('submit', function(event){
         type:'PUT',
         data:{},
         success:function(){
-          swal('Increase successful!', 'continue!', 'success')
           $('#total1').load(root + '/cart #total2')
           $('#qty'+id).load(root + '/cart ' + qty2)
           $('#numberCart').load(root + ' #numberCart2')
@@ -46,7 +45,6 @@ $('.reduceCart').on('submit', function(event){
         type:'PUT',
         data:{},
         success:function(){
-          swal('Reduce successful!', 'continue!', 'success')
           $('#total1').load(root + '/cart #total2')
           $('#qty' + id).load(root + '/cart ' + qty2)
           $('#numberCart').load(root + ' #numberCart2')
@@ -67,11 +65,16 @@ $('.deleteCart').on('submit', function(event) {
       url:href,
       type:'DELETE',
       data:{},
-      success:function(){
-          swal('Delete successful!', 'continue!', 'success')
+      success:function(data){
+          swal(data, 'success')
           $('#total1').load(root + '/cart #total2')
           $(tr_cart_id).empty()
           $('#numberCart').load(root + ' #numberCart2')
       }
     })
+})
+
+const carts = ['banana', 'apple', 'orange']
+carts.map(cart => {
+  console.log(carts.length)
 })

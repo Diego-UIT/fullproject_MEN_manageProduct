@@ -18,9 +18,10 @@
                     <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
                         <div class="featured__item">
                             <div class="featured__item__pic">
-                                <img src="<%= product.imageSrc %>">
+                                <a href="/product/<%= product._id %>">
+                                    <img src="<%= product.imageSrc %>">
+                                </a>
                                 <ul class="featured__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                     <li>
                                         <a href="/cart/add/<%= product._id %>" class="addToCart">
                                         <i class="fa fa-shopping-cart"></i></a>

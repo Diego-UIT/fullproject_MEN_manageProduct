@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt')
 const passport = require('passport')
 const router = express.Router()
 
-function check(req, res, next) {
+const check = (req, res, next) => {
     if(req.isAuthenticated()) return next()
     res.redirect('/user/login')
 }
